@@ -24,7 +24,6 @@ fn main() {
             if *user == "taiga" {
                 let rss_str = columns.get(5).unwrap_or(&"0");
                 let rss_value: i32 = rss_str.parse().unwrap_or(0);
-                let cpu = columns.get(2).unwrap_or(&"");
 
                 let file_name = format!("./data/{}.csv",pid);
                 let path = Path::new(&file_name);
@@ -35,7 +34,7 @@ fn main() {
                     .open(path)
                     .expect("Failed to open file");
 
-                writeln!(file, "{},{}", cpu, rss_value)
+                writeln!(file, "{}", rss_value)
                     .expect("Failed to write to file");
             }
         }
