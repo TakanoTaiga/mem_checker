@@ -56,7 +56,7 @@ fn main() -> io::Result<()> {
 
                 // グラフをPNGファイルとして保存
                 let graph_path = format!("{}/{}.png", graph_dir, file_name);
-                save_graph(&graph_path, &values);
+                let _ = save_graph(&graph_path, &values);
             }
         }
     }
