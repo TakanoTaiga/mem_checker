@@ -7,10 +7,10 @@ use walkdir::WalkDir;
 fn main() -> io::Result<()> {
     let data_dir = "./data";
     let optimized_dir = "./optimized";
-    let graph_dir = "./graphs"; // グラフを保存するディレクトリ
+    let graph_dir = "./graphs";
 
     fs::create_dir_all(optimized_dir)?;
-    fs::create_dir_all(graph_dir)?; // グラフ用ディレクトリの作成
+    fs::create_dir_all(graph_dir)?;
 
     for entry in WalkDir::new(data_dir).into_iter().filter_map(|e| e.ok()) {
         let path = entry.path();

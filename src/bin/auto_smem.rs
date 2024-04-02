@@ -2,15 +2,16 @@ use std::process::{Command, Stdio};
 use std::thread;
 use std::time::Duration;
 use std::path::Path;
-use std::fs::OpenOptions;
+use std::fs::{OpenOptions, create_dir_all};
 use std::io::Write;
 
 fn main() {
+    let _ = create_dir_all("data");
     loop {
         let output = Command::new("smem")
             .stdout(Stdio::piped())
             .output()
-            .expect("Failed to execute command");
+            .expect("Failed to execute command");   
 
         let output_str = String::from_utf8_lossy(&output.stdout);
         let lines = output_str.lines().skip(1);

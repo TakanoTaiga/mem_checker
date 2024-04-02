@@ -1,12 +1,12 @@
 use std::process::{Command, Stdio};
-use std::fs::OpenOptions;
+use std::fs::{OpenOptions, create_dir_all};
 use std::io::Write;
 use std::thread;
 use std::time::Duration;
 use std::path::Path;
 
-
 fn main() {
+    let _ = create_dir_all("data");
     loop {
         let output = Command::new("ps")
             .args(["aux"])

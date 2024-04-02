@@ -2,10 +2,11 @@ use std::process::{Command, Stdio};
 use std::thread;
 use std::time::Duration;
 use std::path::Path;
-use std::fs::OpenOptions;
+use std::fs::{OpenOptions, create_dir_all};
 use std::io::Write;
 
 fn main() {
+    let _ = create_dir_all("data");
     loop {
         let output = Command::new("pmap")
             .args(["-x", "82768"])
